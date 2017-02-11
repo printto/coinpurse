@@ -14,7 +14,6 @@ import java.util.Collections;
  */
 public class Purse {
 	/** Collection of objects in the purse. */
-	//TODO declare a List of Coins named "money".
 	ArrayList<Coin> money = new ArrayList<Coin>();
 
 	/** Capacity is maximum number of coins the purse can hold.
@@ -27,7 +26,6 @@ public class Purse {
 	 *  @param capacity is maximum number of coins you can put in purse.
 	 */
 	public Purse( int capacity ) {
-		//TODO initialize the attributes of purse
 		this.capacity = capacity;
 	}
 
@@ -57,7 +55,6 @@ public class Purse {
 	 * Return the capacity of the coin purse.
 	 * @return the capacity
 	 */
-	//TODO write accessor method for capacity. Use Java naming convention.
 	public int getCapacity() {
 		return this.capacity;
 	}
@@ -69,8 +66,6 @@ public class Purse {
 	 *  @return true if purse is full.
 	 */
 	public boolean isFull() {
-		//TODO complete this method
-		//TODO Don't Repeat Yourself: Avoid writing duplicate code.
 		return count() == capacity;
 	}
 
@@ -83,7 +78,6 @@ public class Purse {
 	 */
 	public boolean insert( Coin coin ) {
 		// if the purse is already full then can't insert anything.
-		//TODO complete the insert method
 		if(!isFull() && coin.getValue() != 0){
 			money.add(coin);
 			return true;
@@ -100,7 +94,6 @@ public class Purse {
 	 *    or null if cannot withdraw requested amount.
 	 */
 	public Coin[] withdraw( double amount ) {
-		//TODO don't allow to withdraw amount < 0
 		if( amount < 0 ){
 			return null;
 		}
@@ -109,7 +102,6 @@ public class Purse {
 		 * See lab sheet for outline of a solution, 
 		 * or devise your own solution.
 		 */
-
 		Collections.sort(money);
 		ArrayList<Coin> templist = new ArrayList<Coin>();
 		if(getBalance() >= amount){
@@ -139,7 +131,7 @@ public class Purse {
 		}
 		Coin [] array = new Coin[ templist.size() ]; // create the array
 		templist.toArray(array);
-		return array; //TODO replace this with real code
+		return array;
 	}
 
 	/** 
@@ -147,10 +139,7 @@ public class Purse {
 	 * It can return whatever is a useful description.
 	 */
 	public String toString() {
-		//TODO complete this
 		return money.size() + " coins with value " + this.getBalance();
 	}
 
 }
-//TODO remove the TODO comments after you complete them.
-//TODO When you are finished, there should not be any TODO. Including this one.
