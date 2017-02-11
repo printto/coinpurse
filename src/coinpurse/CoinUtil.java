@@ -41,7 +41,12 @@ public class CoinUtil {
 	 * 2. Create a comparator instance and use it to sort the coins.
 	 */
 	public static void sortByCurrency(List<Coin> coins) {
-
+		Collections.sort(coins, new Comparator<Coin>() {
+			@Override
+			public int compare(Coin o1, Coin o2) {
+				return o1.getCurrency().compareTo(o2.getCurrency());
+			}
+		});
 	}
 
 	/**
@@ -57,7 +62,23 @@ public class CoinUtil {
 	 * Hint: this is easy if you sort the coins by currency first. :-)
 	 */
 	public static void sumByCurrency(List<Coin> coins) {
-
+		sortByCurrency(coins);
+		String currency = "";
+		double sum = 0;
+		ArrayList<String> total = new ArrayList<String>();
+		for(int i = 0 ; i < coins.size() ; i++){
+			currency = coins.get(i).getCurrency();
+			sum = sum + coins.get(i).getValue();
+			if(i < coins.size() - 1){
+				if(!coins.get(i).getCurrency().equals(coins.get(i + 1).getCurrency())){
+					total.add(sum + " " + currency);
+					sum = 0;
+				}
+			}
+		}
+		for(String result : total){
+			System.out.println(result);
+		}
 	}
 
 	/**
