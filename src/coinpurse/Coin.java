@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
  * a coin with a monetary value and currency
  * @author Pappim Pipatkasrira
  */
-public class Coin implements Comparable<Coin> {
+public class Coin implements Valuable {
 	public static final String DEFAULT_CURRENCY = "Baht";
 	/** Value of the coin. */
 	private final double value;
@@ -60,10 +60,10 @@ public class Coin implements Comparable<Coin> {
 	}
 
 	/**
-	 * Compare the value of 2 coins.
+	 * Compare the value of 2 valuable objects.
 	 * @return int of compareTo method.
 	 */
-	public int compareTo( Coin other ){
+	public int compareTo( Valuable other ){
 		if( this == null ){
 			return -1;
 		}
@@ -86,5 +86,4 @@ public class Coin implements Comparable<Coin> {
 		DecimalFormat format = new DecimalFormat("0.##");
 		return format.format(value) + "-" + currency;
 	}
-
 }
