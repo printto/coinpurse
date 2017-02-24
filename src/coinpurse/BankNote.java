@@ -3,18 +3,13 @@ package coinpurse;
 import java.util.Random;
 
 /**
- * 
+ * a bank note with a monetary value and currency
  * @author Pappim Pipatkasrira
  * @version 1.0
  * @since Feb 17, 2017
  */
 
-public class BankNote implements Valuable{
-	public static final String DEFAULT_CURRENCY = "Baht";
-	/** Value of the bank note. */
-	private final double value;
-	/** The currency, of course. */
-	private final String currency;
+public class BankNote extends AbstractValuable {
 	private static long nextSerialNumber = 1000000;
 	private long serialNumber = 1000000;
 
@@ -23,8 +18,7 @@ public class BankNote implements Valuable{
 	 * @param value
 	 */
 	public BankNote( double value ) {
-		this.value = value;
-		this.currency = DEFAULT_CURRENCY;
+		super(value,DEFAULT_CURRENCY);
 		serialNumber = nextSerialNumber++;
 	}
 
@@ -34,47 +28,10 @@ public class BankNote implements Valuable{
 	 * @param currency
 	 */
 	public BankNote( double value, String currency ) {
-		this.value = value;
-		this.currency = currency;
+		super(value,currency);
 		serialNumber = nextSerialNumber++;
 	}
 
-	/**
-	 * Compare the value of 2 valuable objects.
-	 * @return int of compareTo method.
-	 */
-	@Override
-	public int compareTo(Valuable other) {
-		if( this == null ){
-			return -1;
-		}
-		else if(this.value < other.getValue()){
-			return -1;
-		}
-		else if(this.value > other.getValue()){
-			return 1;
-		}
-		else{
-			return 0;
-		}
-	}
-
-	/**
-	 * @return value of the bank note.
-	 */
-	@Override
-	public double getValue() {
-		return value;
-	}
-
-	/**
-	 * @return currency of the bank note.
-	 */
-	@Override
-	public String getCurrency() {
-		return currency;
-	}
-	
 	/**
 	 * @return serial of the bank note.
 	 */
