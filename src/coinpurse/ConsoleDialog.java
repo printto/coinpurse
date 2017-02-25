@@ -9,8 +9,10 @@ import java.util.Scanner;
  * balance.
  */
 public class ConsoleDialog {
+	// create moneyFactory
+	public static MoneyFactory moneyFactory = MoneyFactory.getInstance();
 	// default currency for this dialog
-	public static final String CURRENCY = "Baht";
+	public static final String CURRENCY = moneyFactory.getCurrency();
 	// use a single java.util.Scanner object for reading all input
 	private static Scanner console = new Scanner( System.in );
 
@@ -55,7 +57,6 @@ public class ConsoleDialog {
 		Scanner scanline = new Scanner(inline);
 		while( scanline.hasNextDouble() ) {
 			double value = scanline.nextDouble();
-			MoneyFactory moneyFactory = MoneyFactory.getInstance();
 			Valuable valuable;
 			try {
 				valuable = moneyFactory.createMoney( value );

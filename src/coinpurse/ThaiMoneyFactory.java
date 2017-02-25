@@ -12,6 +12,11 @@ public class ThaiMoneyFactory extends MoneyFactory{
 	 * Bank note serial number generating.
 	 */
 	private static long nextSerialNumber = 1000000;
+	
+	/**
+	 * Currency of the money
+	 */
+	public final String CURRENCY = "Bath";
 
 	/**
 	 * Create a money in Bath currency.
@@ -30,6 +35,15 @@ public class ThaiMoneyFactory extends MoneyFactory{
 			throw new IllegalArgumentException();
 		}
 
+	}
+	
+	/**
+	 * Get currency
+	 * @return CURRENCY
+	 */
+	@Override
+	public String getCurrency(){
+		return CURRENCY;
 	}
 
 }

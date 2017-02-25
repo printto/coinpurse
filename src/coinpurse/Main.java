@@ -12,6 +12,11 @@ public class Main {
 	 * @param args not used
 	 */
 	public static void main( String[] args ) {
+		
+		// 0. setup a MoneyFactory
+		MoneyFactory moneyFactory = MoneyFactory.getInstance();
+		moneyFactory.setMoneyFactory("ThaiMoneyFactory");
+		
 		// 1. create a Purse
 		Purse purse = new Purse(20);
 

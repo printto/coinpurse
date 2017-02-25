@@ -42,4 +42,18 @@ public abstract class MoneyFactory {
 	public Valuable createMoney(String value){
 		return createMoney(Double.parseDouble(value));
 	}
+	
+	public static void setMoneyFactory(String factoryName){
+		if( factoryName.equals( "ThaiMoneyFactory" ) ){
+			moneyFactory = new ThaiMoneyFactory();
+		}
+		else if( factoryName.equals( "MalayMoneyFactory" ) ){
+			moneyFactory = new MalayMoneyFactory();
+		}
+		else{
+			System.out.println("Sorry, "+factoryName+" is not a type of MoneyFactory\nThe MoneyFactory is set to ThaiMoneyFactory (Default stage)");
+		}
+	}
+	
+	public abstract String getCurrency();
 }
