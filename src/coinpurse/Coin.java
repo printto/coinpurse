@@ -34,11 +34,11 @@ public class Coin extends AbstractValuable {
 	public String toString() {
 		if ( currency.equals("Ringgit")) {
 			DecimalFormat format = new DecimalFormat("0.##");
-			return format.format(value*100) + "-Sen";
+			return format.format(value*100) + "-Sen coin";
 		}
 		else {
 			DecimalFormat format = new DecimalFormat("0.##");
-			return format.format(value) + "-" + currency;
+			return format.format(value) + "-" + currency + " coin";
 		}
 	}
 }

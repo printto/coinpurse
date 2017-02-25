@@ -29,8 +29,16 @@ public abstract class MoneyFactory {
 		return moneyFactory;
 	}
 	
+	/**
+	 * Create a money in the current local currency.
+	 * @param value
+	 */
 	public abstract Valuable createMoney(double value);
 	
+	/**
+	 * Create a money in the current local currency.
+	 * @param value as a string.
+	 */
 	public Valuable createMoney(String value){
 		return createMoney(Double.parseDouble(value));
 	}

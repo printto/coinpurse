@@ -10,16 +10,16 @@ import java.util.Random;
  */
 
 public class BankNote extends AbstractValuable {
-	private static long nextSerialNumber = 1000000;
+	
 	private long serialNumber = 1000000;
 
 	/**
 	 * A bank note with given value using the default currency.
 	 * @param value
 	 */
-	public BankNote( double value ) {
+	public BankNote( double value , long serial) {
 		super(value,DEFAULT_CURRENCY);
-		serialNumber = nextSerialNumber++;
+		serialNumber = serial;
 	}
 
 	/**
@@ -27,9 +27,9 @@ public class BankNote extends AbstractValuable {
 	 * @param value
 	 * @param currency
 	 */
-	public BankNote( double value, String currency ) {
+	public BankNote( double value, String currency , long serial) {
 		super(value,currency);
-		serialNumber = nextSerialNumber++;
+		serialNumber = serial;
 	}
 
 	/**
