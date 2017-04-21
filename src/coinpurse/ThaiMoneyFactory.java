@@ -16,7 +16,7 @@ public class ThaiMoneyFactory extends MoneyFactory{
 	/**
 	 * Currency of the money
 	 */
-	public final String CURRENCY = "Bath";
+	public final String CURRENCY = "Baht";
 
 	/**
 	 * Create a money in Bath currency.

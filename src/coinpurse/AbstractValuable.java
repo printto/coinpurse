@@ -57,7 +57,7 @@ public class AbstractValuable implements Valuable {
 		if(obj.getClass() != this.getClass() || obj == null){
 			return false;
 		}
-		Coin objCoin = ( Coin ) obj;
+		Valuable objCoin = ( Valuable ) obj;
 		return this.value == objCoin.getValue() && this.currency == objCoin.getCurrency();
 	}
 

@@ -2,6 +2,7 @@ package coinpurse;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Observable;
 
 /**
  *  A coin purse contains coins.
@@ -12,7 +13,7 @@ import java.util.Collections;
  *  
  *  @author Pappim Pipatkasrira
  */
-public class Purse {
+public class Purse extends Observable{
 	/** Collection of objects in the purse. */
 	ArrayList<Valuable> money = new ArrayList<Valuable>();
 
@@ -80,6 +81,8 @@ public class Purse {
 		// if the purse is already full then can't insert anything.
 		if(!isFull() && valuable.getValue() != 0){
 			money.add(valuable);
+			setChanged();
+			notifyObservers("Inserted " + money);
 			return true;
 		}
 		return false;
@@ -128,6 +131,8 @@ public class Purse {
 		// toArray returns a reference to the array itself.
 		for(int i = 0 ; i < templist.size() ; i++){
 			money.remove(templist.get(i));
+			setChanged();
+			notifyObservers("Removed " + money);
 		}
 		Valuable [] array = new Valuable[ templist.size() ]; // create the array
 		templist.toArray(array);

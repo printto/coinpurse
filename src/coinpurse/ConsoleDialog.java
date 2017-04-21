@@ -1,5 +1,6 @@
 package coinpurse;
 
+import java.util.Observable;
 import java.util.Scanner;
 
 /** 
@@ -8,7 +9,7 @@ import java.util.Scanner;
  * and removing money to/from the purse, and displaying the
  * balance.
  */
-public class ConsoleDialog {
+public class ConsoleDialog{
 	// create moneyFactory
 	public static MoneyFactory moneyFactory = MoneyFactory.getInstance();
 	// default currency for this dialog
@@ -83,7 +84,7 @@ public class ConsoleDialog {
 			if ( money == null ) 
 				System.out.printf("Sorry, couldn't withdraw %g %s\n", amount, CURRENCY);
 			else {
-				System.out.print("You withdrew:");
+				System.out.println("You withdrew:");
 				for(int k=0; k<money.length; k++) {
 					System.out.println(" " + money[k].toString() );
 				}

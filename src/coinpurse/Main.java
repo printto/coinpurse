@@ -1,5 +1,8 @@
 package coinpurse;
 
+import coinpurseGUI.ItemCountGUI;
+import coinpurseGUI.ShowBalanceGUI;
+
 /**
  * A main class to create objects and connect objects together.
  * The user interface needs a reference to coin purse.
@@ -19,6 +22,14 @@ public class Main {
 		
 		// 1. create a Purse
 		Purse purse = new Purse(20);
+		
+		// 1.5. add observer to the purse
+		ShowBalanceGUI observer1 = new ShowBalanceGUI();
+		ItemCountGUI observer2 = new ItemCountGUI();
+		purse.addObserver(observer1);
+		purse.addObserver(observer2);
+		observer1.run();
+		observer2.run();
 
 		// 2. create a ConsoleDialog with a reference to the Purse object
 		ConsoleDialog console = new ConsoleDialog(purse);
