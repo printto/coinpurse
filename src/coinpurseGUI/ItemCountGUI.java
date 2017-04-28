@@ -14,15 +14,29 @@ import javax.swing.JProgressBar;
 import coinpurse.MoneyFactory;
 import coinpurse.Purse;
 
+/**
+ * Item counting GUI for Coin Purse.
+ * @author Pappim Pipatkasrira
+ * @version 1.0
+ * @since Apr 28, 2017
+ */
 public class ItemCountGUI extends JFrame implements Observer {
 
+	//Label showing amount of item.
 	JLabel itemCount = new JLabel("0 Item");
+	//Progress bar showing how much item are stored.
 	JProgressBar progressBar = new JProgressBar();
 
+	/**
+	 * Create ItemCountGUI JFrame.
+	 */
 	public ItemCountGUI(){
 		initComponents();
 	}
 
+	/**
+	 * Initialize components in the JFrame
+	 */
 	private void initComponents() {
 		this.setTitle("Current amount of items.");
 		this.setAlwaysOnTop(true);
@@ -38,6 +52,9 @@ public class ItemCountGUI extends JFrame implements Observer {
 		this.pack();
 	}
 
+	/**
+	 * Update components in the JFrame when the information data changed.
+	 */
 	@Override
 	public void update(Observable subject, Object info) {
 		if(subject instanceof Purse){
@@ -57,6 +74,9 @@ public class ItemCountGUI extends JFrame implements Observer {
 		this.pack();
 	}
 	
+	/**
+	 * Make this JFrame visible.
+	 */
 	public void run(){
 		this.setVisible(true);
 	}
