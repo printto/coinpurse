@@ -2,7 +2,12 @@ package coinpurse;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Observable;
+
+import coinpurse.strategy.GreedyWithdraw;
+import coinpurse.strategy.RecursiveWithdraw;
+import coinpurse.strategy.WithdrawStrategy;
 
 /**
  *  A coin purse contains coins.
@@ -21,6 +26,12 @@ public class Purse extends Observable{
 	 *  Capacity is set when the purse is created and cannot be changed.
 	 */
 	private final int capacity;
+
+	WithdrawStrategy strategy = new RecursiveWithdraw();
+	
+	public void setWithdrawStrategy(WithdrawStrategy strategy) {
+		this.strategy = strategy;
+	}
 
 	/** 
 	 *  Create a purse with a specified capacity.
@@ -105,21 +116,17 @@ public class Purse extends Observable{
 		 * See lab sheet for outline of a solution, 
 		 * or devise your own solution.
 		 */
+		List<Valuable> templist = null;
 		Collections.sort(money);
-		ArrayList<Valuable> templist = new ArrayList<Valuable>();
 		if(getBalance() >= amount){
-			for(int i = money.size() -1 ; i >= 0 ; i--){
-				if(amount - money.get(i).getValue() >= 0){
-					amount = amount - money.get(i).getValue();
-					templist.add(money.get(i));
-				}
-			}
+			
+			templist = strategy.withdraw(amount,money);
 		}
 
 
 		// Did we get the full amount?
 		// This code assumes you decrease amount each time you remove a coin.
-		if ( amount > 0 ) {
+		if ( templist == null ) {
 			// failed. Don't change the contents of the purse.
 			return null;
 		}

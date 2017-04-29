@@ -73,7 +73,7 @@ public class ConsoleDialog{
 			System.out.println("Invalid input: "+scanline.next() );
 	}
 
-	/** Ask how much money (Baht) to withdraw and then do it.
+	/** Ask how much money to withdraw and then do it.
 	 *  After withdraw, show the values of the coins we withdrew.
 	 */
 	public void withdrawDialog() {
