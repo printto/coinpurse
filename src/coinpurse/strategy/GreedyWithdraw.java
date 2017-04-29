@@ -6,8 +6,19 @@ import java.util.List;
 
 import coinpurse.Valuable;
 
+/**
+ * Withdraw money be using Greedy method.
+ * This strategy requires sorting the money from more to less first.
+ * @author Pappim Pipatkasrira
+ * @version 1.0
+ * @since Apr 29, 2017
+ */
 public class GreedyWithdraw implements WithdrawStrategy{
 
+	/**
+	 * Withdraw money.
+	 * Require sorting the money from more to less first.
+	 */
 	@Override
 	public List<Valuable> withdraw( double amount , List<Valuable> money) {
 

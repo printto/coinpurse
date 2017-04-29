@@ -12,6 +12,12 @@ import coinpurse.Valuable;
  */
 public interface WithdrawStrategy {
 	
+	/**
+	 * Withdraw money
+	 * @param amount of the money.
+	 * @param money as a List.
+	 * @return List of money to be remove or return.
+	 */
 	public List<Valuable> withdraw( double amount , List<Valuable> money);
 
 }

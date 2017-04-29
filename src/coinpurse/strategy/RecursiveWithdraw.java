@@ -6,8 +6,17 @@ import java.util.List;
 import coinpurse.Coin;
 import coinpurse.Valuable;
 
+/**
+ * Recursive method of withdrawing money.
+ * @author Pappim Pipatkasrira
+ * @version 1.0
+ * @since Apr 29, 2017
+ */
 public class RecursiveWithdraw implements WithdrawStrategy{
 
+	/**
+	 * Withdraw money using recursion.
+	 */
 	@Override
 	public List<Valuable> withdraw(double amount, List<Valuable> money) {
 
