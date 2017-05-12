@@ -1,6 +1,7 @@
 package coinpurse;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -17,14 +18,10 @@ public class CoinUtil {
 	 * @return a new List containing only the elements from moneylist
 	 *     that have the requested currency.  
 	 */
-	public static List<Valuable> filterByCurrency(final List<Valuable> moneyList, String currency) {
-		List<Valuable> newMoneylist = new ArrayList<Valuable>();
-		for( Valuable coin : moneyList ){
-			if( coin.getCurrency().equals(currency) ){
-				newMoneylist.add(coin);
-			}
-		}
-		return newMoneylist; // return a list of coin references copied from moneyList
+	public static <E extends Valuable> List<E> filterByCurrency(final List<E> moneyList, String currency) {
+		if(currency == null) return null;
+		Predicate<E> predicate = (v) -> v.getCurrency().equals(currency);
+		return moneyList.stream().filter( predicate ).collect(Collectors.toList());
 	}
 
 
@@ -40,7 +37,7 @@ public class CoinUtil {
 	 *    The compare method should order money by currency.
 	 * 2. Create a comparator instance and use it to sort the money.
 	 */
-	public static void sortByCurrency(List<Valuable> money) {
+	public static <E extends Valuable> void sortByCurrency(List<E> money) {
 		Collections.sort(money, new Comparator<Valuable>() {
 			@Override
 			public int compare(Valuable o1, Valuable o2) {
@@ -106,6 +103,9 @@ public class CoinUtil {
 		System.out.print("money= "); printList(money," ");
 		sumByCurrency(money);
 
+		System.out.println("\nMax of 5 bahtcoin, 10 baht coin, 1 bath coin and 20 Baht note.");
+		System.out.println(max(new Coin(1), new Coin(5), new Coin(10), new BankNote(20,100000)));
+
 	}
 
 	/** Make a list of money containing different currencies. */
@@ -135,5 +135,20 @@ public class CoinUtil {
 
 		}
 		System.out.println(); // end the line
+	}
+
+	/**
+	 * Return the larger of a and b, according to the natural ordering (defined by compareTo).
+	 */
+	public static <E extends Comparable<? super E>> E max(E... a) {
+		E answer = a[0];
+		for(int i = 0 ; i < a.length ; i++){
+			if( i != 0){
+				if(a[i].compareTo(answer) > 0){
+					answer = a[i];
+				}
+			}
+		}
+		return answer;
 	}
 }
